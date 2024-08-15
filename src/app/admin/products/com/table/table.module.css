@@ -1,0 +1,31 @@
+.tableContainer {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableHeader {
+    background-color: #f3f4f6;
+    text-align: left;
+}
+
+.tableHeader th {
+    padding: 12px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.tableRow {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tableRow:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.tableRow:hover {
+    background-color: #f1f5f9;
+}
+
+.tableCell {
+    padding: 12px;
+    text-align: left;
+}

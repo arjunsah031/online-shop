@@ -1,0 +1,66 @@
+
+.Header {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(128, 128, 128, 0.58);
+    height: 70px;
+}
+.promoBar {
+    background-color: #6b3a1f; /* brown-900 */
+    text-align: center;
+    color: white;
+}
+
+.promoText {
+    font-size: 0.875rem; /* text-sm */
+}
+
+.nav {
+    height: 3.5rem; /* h-14 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navItems {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem; /* gap-6 */
+}
+
+.navItem {
+    list-style: none;
+    color: #063970; /* text-brown-300 */
+    text-underline-offset: 4px; /* underline-offset-4 */
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.navItem:hover {
+    color: #031d38; /* hover:text-brown-900 */
+    text-decoration: underline;
+}
+
+.navItemActive {
+    font-weight: 600; /* font-semibold */
+    color: #031d38; /* text-brown-900 */
+    text-decoration: underline;
+}
+
+.loginButton {
+    list-style: none;
+    color: #d4b996; /* text-brown-300 */
+    text-underline-offset: 4px; /* underline-offset-4 */
+    transition: all 0.3s;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.loginButton:hover {
+    color: #6b3a1f; /* hover:text-brown-900 */
+    text-decoration: underline;
+}

@@ -1,0 +1,15 @@
+/* Skeleton.module.css */
+.skeleton {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    border-radius: 0.375rem; /* equivalent to rounded-md */
+    background-color: var(--color-muted); /* equivalent to bg-muted */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}

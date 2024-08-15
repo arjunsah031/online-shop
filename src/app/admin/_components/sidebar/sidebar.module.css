@@ -1,0 +1,27 @@
+.sidebar {
+    width: 250px;
+    min-height: 600px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li  {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}

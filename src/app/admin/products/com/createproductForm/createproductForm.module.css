@@ -1,0 +1,48 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .formItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .formLabel {
+    font-weight: bold;
+  }
+  
+  .formInput {
+    padding: 8px;
+    border: 1px solid #ddd;
+    background-color: white;
+    outline: none;
+    color: black;
+    border-radius: 4px;
+  }
+  
+  
+  .formTextarea {
+    padding: 8px;
+    border: 1px solid #ddd;
+    color: black;
+    background-color: white;
+    outline: none;
+    border-radius: 4px;
+  }
+  
+  .formButton {
+    padding: 10px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .formButton:disabled {
+    background-color: #ccc;
+  }
+  

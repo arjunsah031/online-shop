@@ -1,0 +1,14 @@
+/* Footer.module.css */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5a3814; /* equivalent to bg-brown-900 */
+    padding-top: 0.75rem; /* equivalent to py-3 */
+    padding-bottom: 0.75rem;
+    color: white;
+}
+
+.text {
+    font-weight: 500; /* equivalent to font-medium */
+}

@@ -1,0 +1,66 @@
+.customHeight {
+    height: 100vh; /* Adjust based on your custom height requirement */
+    padding-top: 100px;
+}
+
+.container {
+    z-index: 50;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.25rem;
+    color: white;
+    @media (min-width: 768px) {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+    @media (min-width: 1280px) {
+        padding-left: 7rem;
+        padding-right: 7rem;
+    }
+    @media (min-width: 1920px) {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+}
+
+.heroTitle {
+    font-size: 6rem; /* Adjust as necessary */
+    font-weight: bold;
+    text-transform: capitalize;
+    line-height: 1.2;
+    letter-spacing: tight;
+    @media (min-width: 1920px) {
+        font-size: 6rem; /* Adjust as necessary */
+        line-height: 1.2;
+    }
+}
+
+.heroDescription {
+    margin-top: 2rem;
+    max-width: 37.5rem;
+    font-size: 1.25rem;
+    @media (min-width: 1920px) {
+        font-size: 1.5rem;
+    }
+}
+
+.heroButton {
+    margin-top: 2rem;
+    width: fit-content;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.heroImage {
+    z-index: -10;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    background-color: rgba(0, 0, 0, 0.5);
+}

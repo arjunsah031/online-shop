@@ -1,0 +1,12 @@
+.horizontal {
+    height: 1px;
+    width: 100%;
+    background-color: var(--border); /* Adjust with your color variable or value */
+  }
+  
+  .vertical {
+    height: 100%;
+    width: 1px;
+    background-color: var(--border); /* Adjust with your color variable or value */
+  }
+  

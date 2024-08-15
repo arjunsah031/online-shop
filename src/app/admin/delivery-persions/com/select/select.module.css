@@ -1,0 +1,30 @@
+.selectWrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.select:focus {
+    border-color: #0070f3;
+}
+
+.select:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}

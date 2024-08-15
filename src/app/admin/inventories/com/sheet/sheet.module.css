@@ -1,0 +1,34 @@
+/* components/Sheet/Sheet.module.css */
+
+.sheet {
+    padding: 20px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    max-width: 600px;
+    background-color: #fff;
+    position: fixed;
+    top: 0px;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .content {
+    font-size: 1em;
+    color: #333;
+  }
+  .close {
+    color: rgba(160, 4, 4, 0.966);
+    font-size: 13px;
+    padding: 10px;
+    background-color: white;
+    outline: none;
+    border: 0.5px solid gray;
+  }
+  
