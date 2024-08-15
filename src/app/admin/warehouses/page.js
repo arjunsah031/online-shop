@@ -1,6 +1,5 @@
 "use client"
 
-
 import CssStyle from './page.module.css';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {  createWarehouses, getAllwarehouses } from '@/http/api';

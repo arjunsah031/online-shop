@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Select.module.css';
+import styles from './select.module.css';
 
 
 export default function Select({ options, value, onChange, placeholder, disabled }){
