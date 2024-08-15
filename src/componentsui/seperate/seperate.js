@@ -3,7 +3,7 @@
 import React from "react"
 import * as SeparatorPrimitive from "@radix-ui/react-separator"
 import { cn } from "@/lib/utils"
-import styles from "./Separator.module.css"
+import styles from "./seperate.module.css"
 
 const Separator = React.forwardRef(
   ({ className, orientation = "horizontal", decorative = true, ...props }, ref) => (
