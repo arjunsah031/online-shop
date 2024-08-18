@@ -62,11 +62,14 @@
 .productCard {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
     align-items: flex-start; /* corrected to flex-start for alignment consistency */
-    justify-content: center;
+    justify-content: space-between;
     width: 200px;
-    border: 0.5px solid rgba(128, 128, 128, 0.623);
+    height: 300px;
+    overflow: hidden;
+    
+    
     border-radius: 5px;
     color: black;
 }
@@ -76,10 +79,14 @@
     object-fit: cover;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); /* equivalent to shadow-lg */
     cursor: pointer;
+    width: 100%;
+    height: 60%;
 }
 
 .textContainer {
     width: 100%;
+    height: 30%;
+    
 }
 
 .productName {
@@ -89,7 +96,7 @@
 }
 
 .priceContainer {
-    margin-top: 0.25rem;
+    
     display: inline-block;
 }
 
@@ -98,8 +105,12 @@
 }
 
 .button {
-    margin-top: 1.25rem;
+    margin-top: 1rem;
     width: 100%;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
     background-color: #5a3814; /* equivalent to bg-brown-900 */
 }
 

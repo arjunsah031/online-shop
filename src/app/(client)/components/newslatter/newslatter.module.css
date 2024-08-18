@@ -44,13 +44,17 @@
 .inputContainer {
     position: relative;
     margin-top: 1.5rem;
-    width: 400px;
+    width: 500px;
 }
 
 .input {
     border-color: rgba(255, 255, 255, 0.4);
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
+    padding: 10px;
+    width: 65%;
+    font-size: 15px;
+    letter-spacing: 4px;
 }
 
 .input::placeholder {
@@ -63,19 +67,28 @@
 }
 
 .button {
+    border: none;
+    outline: none;
+    border-radius: 3px;
     position: absolute;
     right: 0;
     top: 50%;
     margin-right: 0.25rem;
     height: 2rem;
     transform: translateY(-50%);
-    background-color: white;
-    color: #5a3814;
+    background-color: #B43F3F;
+    color: whitesmoke;
+    padding: 20px;
     transition: background-color 0.2s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .button:hover {
-    background-color: white;
+    background-color:#e21111;
 }
 
 .image {

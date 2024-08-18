@@ -7,75 +7,74 @@ import Sheet from './com/sheet/sheet';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeProducBoxtActio, openProductBoxAction } from '@/Store/Actions/OpencloseproductBox/OpencloseproductBox';
 import CreateProductForm from './com/createproductForm/createproductForm';
-import { useState } from 'react';
 
 export default function Products() {
 
-  const dispath = useDispatch()
+  const dispatch = useDispatch();
 
-  const opencloseProductbox = useSelector( s => s.OpenCloseProductBoxReaducer.OpenCloseProductBox)
+  const opencloseProductbox = useSelector(s => s.OpenCloseProductBoxReaducer.OpenCloseProductBox);
 
-  const { data:products, error } = useQuery( {
+  const { data: products, error } = useQuery({
     queryKey: ['products'],
     queryFn: getAllProducts,
-  })
- 
-    const columns = [
-        { header: 'Name', accessor: 'name' },
-        { header: 'Price', accessor: 'price' },
-        
-      ];
-    
-      const openBoxhandler = () => {
+  });
 
-        dispath(openProductBoxAction(true))
-      }
+  const columns = [
+    { header: 'Name', accessor: 'name' },
+    { header: 'Price', accessor: 'price' },
+  ];
 
-      const closeBoxHandler = () => {
+  const openBoxHandler = () => {
+    dispatch(openProductBoxAction(true));
+  };
 
-        dispath(closeProducBoxtActio(false))
-      }
+  const closeBoxHandler = () => {
+    dispatch(closeProducBoxtActio(false));
+  };
 
-      const queryclint = useQueryClient()
+  const queryClient = useQueryClient();
 
-      const {mutate} = useMutation({
+  const mutation = useMutation({
+    mutationFn: async (formData) => {
+        const response = await fetch('/api/products', {
+            method: 'POST',
+            body: formData,
+        });
 
-        mutationKey:['create-products'],
-        mutationFn: (data) => createProducts(data),
-        onSuccess: () => {
-            queryclint.invalidateQueries({ queryKey : ['products']});
+        if (!response.ok) {
+            throw new Error('Failed to create product');
         }
 
-      })
+        return response.json();
+    },
+    onSuccess: () => {
+        // Invalidate and refetch products
+        queryClient.invalidateQueries(['products']);
+    },
+    onError: (error) => {
+        console.error('Error:', error.message);
+    }
+});
 
-      const handleSubmit = (data) => {
-      
-        mutate(data)
-      }
+  const handleSubmit = (formData) => {
 
-      // let lodingdata;
-      
-      // if(!products) {
+    mutation.mutate(formData);
+  };
 
-      //   return lodingdata = <div>loding.</div>
-        
-      // }
+  return (
+    <section className={CssStyle.Con}>
+      <div className={CssStyle.products}>
+        <h3>Products</h3>
+        <button onClick={openBoxHandler}>Add Product</button>
+      </div>
 
-    return <section className={ CssStyle.Con}>
-        <div className={ CssStyle.products}>
-            <h3>Products</h3>
-            <button onClick={openBoxhandler}>add product</button>
-        </div>
+      {opencloseProductbox && (
+        <Sheet cloxbox={closeBoxHandler} title="My Sheet Component">
+          <CreateProductForm onSubmit={handleSubmit} />
+        </Sheet>
+      )}
 
-        {opencloseProductbox && <Sheet cloxbox={closeBoxHandler} title="My Sheet Component">
-              <p>This is some content inside the sheet component.</p>
-              <div>ffhofh</div>
-
-              <CreateProductForm onSubmit={handleSubmit}   />
-            </Sheet>}
-
-        <Table columns={columns} data={ products || []} />
-
-       
+      <Table columns={columns} data={products || []} />
     </section>
+  );
 }

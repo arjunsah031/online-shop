@@ -1,48 +1,52 @@
-"use client"
-import { useState } from 'react';
-import Select from './com/select/select';
+'use client';
 
-import style from './page.module.css'
+import { getAllOrders } from '@/http/api';
+import { useQuery } from '@tanstack/react-query';
+import { Loader2 } from 'lucide-react';
+import React from 'react';
+import Table from './com/table/table';
+import styles from './page.module.css'
 
-const Home = () => {
-  const [selectedValue, setSelectedValue] = useState('');
 
-  const handleChange = (event) => {
-    setSelectedValue(event.target.value);
-  };
+export default function OrdersPage (){
 
-  const options = [
-    { value: '', label: 'Select an option' },
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
+  const columns = [
+    { header: 'Product Name', accessor: 'product' },
+    { header: 'Qty', accessor: 'qty' },
+    { header: 'Customer Name', accessor: 'user' },
+    { header: 'Order Type', accessor: 'type' },
+    { header: 'Address', accessor: 'address' },
+    { header: 'Status', accessor: 'status' },
+    
   ];
+    const {
+        data: orders,
+        isError,
+        isLoading,
+    } = useQuery({
+        queryKey: ['orders'],
+        queryFn: getAllOrders,
+    });
 
-  return (
-    <div className={ style.Con}>
-      <h1>Select Component Example</h1>
-      <Select
-        options={options}
-        value={selectedValue}
-        onChange={handleChange}
-      />
+    console.log(orders)
 
-      <select
-         value="fhfhhfd"
-      >
+    return (
+        <>
+            <div className={styles.products}>
+                <h3 className="text-2xl font-bold tracking-tight">Orders</h3>
+            </div>
 
-        <options>
-                helo
-        </options>
+            {isError && <span className="text-red-500">Something went wrong.</span>}
 
-        <options>
-                myname
-        </options>
-
-      </select>
-      <p>Selected Value: {selectedValue}</p>
-    </div>
-  );
+            {isLoading ? (
+                <div className={styles.LoderCon}>
+                    <Loader2 className="size-10 animate-spin" />
+                </div>
+            ) : (
+                <Table columns={columns} data={orders || []} />
+            )}
+        </>
+    );
 };
 
-export default Home;
+

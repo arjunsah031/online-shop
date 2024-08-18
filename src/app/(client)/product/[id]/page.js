@@ -10,6 +10,7 @@ import { Loader2, Star } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import styles from './page.module.css';
+import Products from '../../components/products/products';
 
 
 const SingleProduct = () => {
@@ -132,8 +133,8 @@ const SingleProduct = () => {
                             <Skeleton className={`${styles.aspectSquare} ${styles.w28rem} ${styles.bgBrown100}`} />
                         ) : (
                             <Image
-                                src={product?.image || '/product3.jpg'}
-                                alt={product?.name || 'Product Image'}
+                                src={`/assets/${product?.image}` ?? '/product1.jpg'}
+                                alt={product?.name ?? 'image'}
                                 width={300}
                                 height={300}
                                  
@@ -222,13 +223,13 @@ const SingleProduct = () => {
                                 <div className={`${styles.flexItemsCenter} ${styles.justifyBetween}`}>
                                     <span className={styles.price}>${price}</span>
                                     {session ? (
-                                        <button type="submit" disabled={isPending} >
+                                        <button className={styles.ByeNowbtn} type="submit" disabled={isPending} >
                                             {isPending && (
                                                 <>
                                                     <Loader2 className="mr-2 size-5 animate-spin" />
                                                 </>
                                             )}
-                                            <span className={styles.ByeNowbtn}>Buy Now</span>
+                                            <span >Buy Now</span>
                                         </button>
                                     ) : (
                                         <Link href={`/api/auth/signin?callbackUrl=${pathname}`}>
@@ -247,6 +248,7 @@ const SingleProduct = () => {
                     )}
                 </div>
             </section>
+            <Products/>
         </>
     );
 };

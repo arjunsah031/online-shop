@@ -49,9 +49,17 @@
 }
 
 .button {
-    margin-top: 2.5rem;
-    background-color: #5a3814;
-    transition: background-color 0.2s;
+    margin-top: 2rem;
+    width: fit-content;
+    padding: 20px 50px;
+
+    background-color: #B43F3F;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.308);
+    font-size: 15px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
 }
 
 .button:hover {

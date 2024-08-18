@@ -51,8 +51,22 @@ export const createinventories = async (data) => {
     return await response.data
 }
 
-export const createorder = async (data) => {
+
+
+export const createorder = async (data) => { 
 
     const response = await api.post('/orders',data);
+    return await response.data
+}
+
+export const getAllOrders = async() => { 
+
+    const response = await api.get('/orders');
+    return await response.data
+}
+
+export const getMyOrders = async() => { 
+
+    const response = await api.get('/orders/history');
     return await response.data
 }

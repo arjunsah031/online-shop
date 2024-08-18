@@ -22,6 +22,7 @@
     font-weight: bold;
     letter-spacing: tight;
     color: var(--brown-900); /* Adjust with your color variable or value */
+    color: #982B1C;
 }
 
 .productsGrid {

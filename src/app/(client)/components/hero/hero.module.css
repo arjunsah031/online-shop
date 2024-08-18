@@ -49,8 +49,15 @@
 .heroButton {
     margin-top: 2rem;
     width: fit-content;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 20px 50px;
+
+    background-color: #B43F3F;
+    font-size: 15px;
+}
+.heroButton:hover{
+    background-color: #b91111;
+    transition: all 2s;
+
 }
 
 .heroImage {

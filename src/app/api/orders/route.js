@@ -176,3 +176,56 @@ export async function POST(req) {
   }
     
 }
+
+
+export async function GET() {
+    try {
+        // Fetch all orders with related product and user data
+        const allOrders = await prisma.order.findMany({
+            select: {
+                id: true,
+                product: {
+                    select: {
+                        name: true,
+                        id: true,
+                        image: true,
+                    },
+                },
+                user: {
+                    select: {
+                        id: true,
+                        fname: true,
+                    },
+                },
+                type: true,
+                price: true,
+                status: true,
+                address: true,
+                qty: true,
+                createdAt: true,
+            },
+            orderBy: { id: 'desc' },
+        });
+
+        // Transform data to the desired format
+        const formattedOrders = allOrders.map(order => ({
+            id: order.id,
+            product: order.product.name,
+            productId: order.product.id,
+            userId: order.user.id,
+            user: order.user.fname,
+            type: order.type,
+            price: order.price,
+            image: order.product.image,
+            status: order.status,
+            address: order.address,
+            qty: order.qty,
+            createAt: order.createdAt,
+        }));
+
+        return new Response(JSON.stringify(formattedOrders));
+    } catch (error) {
+        console.error('Error retrieving orders:', error);
+        return new Response(JSON.stringify({ message: 'Error retrieving orders' }), { status: 500 });
+    }
+}
