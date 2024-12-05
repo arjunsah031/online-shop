@@ -4,9 +4,6 @@ import QueryProvider from '@/providers/queryprovider'
 import Reduxprovider from "@/providers/reduxprovider";
 import AuthProvider from "@/providers/authprovider";
 
-
-
-
 const inter = Inter({ subsets: ["latin"] });
 
 

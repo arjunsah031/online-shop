@@ -6,63 +6,13 @@
 
 generator client {
   provider = "prisma-client-js"
-   previewFeatures = ["referentialIntegrity"]
+  
 }
 
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
-// model User {
-//   id         String   @id @default(auto()) @map("_id") @db.ObjectId
-//   fname      String   @db.String
-//   lname      String   @db.String
-//   email      String   @unique @db.String
-//   provider   String?  @db.String
-//   externalId String   @db.String
-//   image      String?  @db.String
-//   role       String   @default("customer") @db.String
-//   updatedAt  DateTime @default(now()) @updatedAt
-//   createdAt  DateTime @default(now())
-// }
-
-// model Products {
-//   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-//   name        String   @db.String
-//   description String?  @db.String
-//   price       Int      @db.Int
-//   updatedAt   DateTime @default(now()) @map("updated_at") 
-//   createdAt   DateTime @default(now()) @map("created_at")
-
-//   @@map("products") // Maps this model to the "products" collection
-// }
-
-// model Warehouse {
-//   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-//   name      String   @map("name")
-//   pincode   String   @map("pincode")
-//   updatedAt DateTime @default(now()) @map("updated_at")
-//   createdAt DateTime @default(now()) @map("created_at")
-
-//   @@index([pincode], map: "pincode_idx")
-// }
-
-// model Order {
-//   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-//   userId    String   @map("user_id")
-//   status    String   @map("status")
-//   type      String   @map("type") @default("quick")
-//   price     Int      @map("price")
-//   address   String   @map("address")
-//   productId String   @map("product_id")
-//   qty       Int      @map("qty")
-//   updatedAt DateTime @default(now()) @map("updated_at")
-//   createdAt DateTime @default(now()) @map("created_at")
-
-//   @@index([userId])
-//   @@index([productId])
-// }
-
 
 model User {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
@@ -73,10 +23,15 @@ model User {
   externalId String  @map("external_id")
   image     String?  @map("image")
   role      String   @default("customer") @map("role")
+  isActive    Boolean  @default(false) @map("is_active")
   updatedAt DateTime @default(now()) @map("updated_at")
   createdAt DateTime @default(now()) @map("created_at")
 
   orders    Order[]
+
+  sales       Sale[]
+  transactions Transaction[]
+  subscriptions Subscription[]
 }
 
 model Product {
@@ -90,6 +45,7 @@ model Product {
 
   orders    Order[]
   inventories Inventory[]
+  sales       Sale[]
 }
 
 model Warehouse {
@@ -146,4 +102,39 @@ model Inventory {
   order       Order?    @relation(fields: [orderId], references: [id], onDelete: SetNull)
   warehouse   Warehouse? @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
   product     Product?  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+
+model Transaction {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerId    String   @map("customer_id") @db.ObjectId
+  customerName  String   @map("customer_name")
+  customerEmail String   @map("customer_email")
+  type          String   @map("type")
+  status        String   @map("status")
+  amount        Float    @map("amount")
+  date          DateTime @default(now()) @map("date")
+
+  customer      User     @relation(fields: [customerId], references: [id])
+}
+
+model Subscription { 
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @map("user_id") @db.ObjectId
+  startDate   DateTime @default(now()) @map("start_date")
+  endDate     DateTime @map("end_date")
+  isActive    Boolean  @default(true) @map("is_active")
+
+  user        User     @relation(fields: [userId], references: [id])
+}
+
+model Sale {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerId String  @map("customer_id") @db.ObjectId
+  productId  String  @map("product_id") @db.ObjectId
+  amount    Float    @map("amount")  // Float should be fine for MongoDB
+  date      DateTime @default(now()) @map("date")
+
+  customer  User     @relation(fields: [customerId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
 }

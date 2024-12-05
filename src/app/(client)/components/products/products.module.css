@@ -104,15 +104,40 @@
     font-weight: bold;
 }
 
-.button {
-    margin-top: 1rem;
+.buttonCon {
+
     width: 100%;
+    height: 30px;
+    background-color: #5a3814; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.buttonCon button {
+    width: 100%;
+    height: 100%;
     outline: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
     background-color: #5a3814; /* equivalent to bg-brown-900 */
 }
+
+.spinner {
+    border: 2px solid #982B1C; /* Light grey background */
+    border-radius: 50%;
+    border-top: 2px solid white; /* Blue color */
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 .button:hover {
     background-color: #4a2d0e; /* equivalent to hover:bg-brown-800 */
@@ -120,4 +145,7 @@
 
 .button:active {
     background-color: #3b2411; /* equivalent to active:bg-brown-700 */
+}
+.loadingSpinner {
+    color: black;
 }

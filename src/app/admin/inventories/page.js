@@ -56,14 +56,6 @@ export default function Devilerypage() {
         mutate(data)
       }
 
-      // let lodingdata;
-      
-      // if(!products) {
-
-      //   return lodingdata = <div>loding.</div>
-        
-      // }
-
     return <section className={ CssStyle.Con}>
         <div className={ CssStyle.products}>
             <h3>Inventories</h3>

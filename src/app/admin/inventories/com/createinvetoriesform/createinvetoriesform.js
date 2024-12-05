@@ -17,9 +17,6 @@ export default  function CreateinventoriesForm  ({onSubmit,disabled,}) {
         queryFn: getAllProducts,
       })
 
-      console.log(products)
-
-
     const [formValues, setFormValues] = React.useState({
         sku: '',
         warehouseId: '',

@@ -8,18 +8,18 @@ import Products from './components/products/products'
 import SpecialProducts from './components/specialproduct/specialproduct'
 
 export default function Page () {
+    
     return <>
 
         <Header/>
         <Hero/>
         <SpecialProducts/>
         <About/>
-
+        
         <Products/>
 
         <NewsLetter/>
         <Footer/>
-
 
     </>
 }
